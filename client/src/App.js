@@ -8,6 +8,8 @@ import LoginForm from './components/loginForm';
 import SignupForm from './components/signupForm';
 import UserProfile from './components/UserProfile';
 
+export const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const App = () => {
   return (
     <Router>

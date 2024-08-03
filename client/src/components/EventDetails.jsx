@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { backendUrl } from '../App';
 
 const EventDetails = () => {
   const {token} = useSelector((store)=>store.user);
@@ -11,7 +12,7 @@ const EventDetails = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(`${process.env.BACKEND_URL}/api/events/${id}`,
+        const response = await axios.get(`${backendUrl}/api/events/${id}`,
         {headers: {Authorization: `Bearer ${token}`}});
         setEvent(response.data);
         console.log(response.data);

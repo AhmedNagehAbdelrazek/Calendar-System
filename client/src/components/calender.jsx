@@ -6,6 +6,7 @@ import axios from 'axios';
 import EventForm from './EventForm';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { backendUrl } from '../App.js';
 
 const localizer = momentLocalizer(moment);
 
@@ -25,7 +26,7 @@ const MyCalendar = () => {
         }else{
             navigate('/login');
         }
-        axios.get(`${process.env.BACKEND_URL}/api/events`,
+        axios.get(`${backendUrl}/api/events`,
           {headers: {Authorization: `Bearer ${token}`}})
           .then(response => setEvents(response.data));
     }, [isLoggedIn,navigate,token]);

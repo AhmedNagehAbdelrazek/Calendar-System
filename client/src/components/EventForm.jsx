@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { backendUrl } from '../App';
 
 const EventForm = ({ selectedStart, selectedEnd, onAddEvent, onClose }) => {
   const {token} = useSelector((store)=>store.user);
@@ -34,7 +35,7 @@ const EventForm = ({ selectedStart, selectedEnd, onAddEvent, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.BACKEND_URL}/api/events`, eventData,
+      const response = await axios.post(`${backendUrl}/api/events`, eventData,
         {headers: {Authorization: `Bearer ${token}`}});
       const newEvent = response.data;
       onAddEvent(newEvent);

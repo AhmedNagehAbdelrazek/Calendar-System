@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box, Stack } from '@mui/material';
+import { backendUrl } from '../App';
 
 const SignupForm = ({ onSignup }) => {
   const [username, setUsername] = useState('');
@@ -12,7 +13,7 @@ const SignupForm = ({ onSignup }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.BACKEND_URL}/api/auth/signup`, { username, password, email })
+      await axios.post(`${backendUrl}/api/auth/signup`, { username, password, email })
       .then(()=>{
         alert('Sign up Sucessfully');
         navigate("/login");

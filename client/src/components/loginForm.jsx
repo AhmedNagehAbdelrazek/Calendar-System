@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { setUser, setToken } from '../RTK/slices/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box, Stack } from '@mui/material';
+import { backendUrl } from '../App';
+
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -14,10 +16,10 @@ const LoginForm = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.BACKEND_URL}/api/auth/login`, { username, password });
+      const response = await axios.post(`${backendUrl}/api/auth/login`, { username, password });
       const { token } = response.data;
       dispatch(setToken(token));
-      const userResponse = await axios.get(`${process.env.BACKEND_URL}/api/user/me`, {
+      const userResponse = await axios.get(`${backendUrl}/api/user/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(setUser(userResponse.data));
