@@ -12,7 +12,7 @@ const SignupForm = ({ onSignup }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/signup', { username, password, email })
+      await axios.post(`${process.env.BACKEND_URL}/api/auth/signup`, { username, password, email })
       .then(()=>{
         alert('Sign up Sucessfully');
         navigate("/login");

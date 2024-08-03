@@ -14,10 +14,10 @@ const LoginForm = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const response = await axios.post(`${process.env.BACKEND_URL}/api/auth/login`, { username, password });
       const { token } = response.data;
       dispatch(setToken(token));
-      const userResponse = await axios.get('http://localhost:5000/api/user/me', {
+      const userResponse = await axios.get(`${process.env.BACKEND_URL}/api/user/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(setUser(userResponse.data));

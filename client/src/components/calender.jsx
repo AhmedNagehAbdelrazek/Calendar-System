@@ -25,7 +25,7 @@ const MyCalendar = () => {
         }else{
             navigate('/login');
         }
-        axios.get('http://localhost:5000/api/events',
+        axios.get(`${process.env.BACKEND_URL}/api/events`,
           {headers: {Authorization: `Bearer ${token}`}})
           .then(response => setEvents(response.data));
     }, [isLoggedIn,navigate,token]);

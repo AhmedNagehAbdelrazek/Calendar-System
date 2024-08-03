@@ -34,7 +34,7 @@ const EventForm = ({ selectedStart, selectedEnd, onAddEvent, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/events', eventData,
+      const response = await axios.post(`${process.env.BACKEND_URL}/api/events`, eventData,
         {headers: {Authorization: `Bearer ${token}`}});
       const newEvent = response.data;
       onAddEvent(newEvent);
