@@ -20,10 +20,10 @@ const EventDetails = () => {
       }
     };
     fetchEvent();
-  }, [id]);
+  }, [id,token]);
 
   useEffect(()=>{
-    if (event != null && event != undefined) return <div>Loading...</div>;
+    if (event !== null && event !== undefined) return <div>Loading...</div>;
   },[event]);
 
   return (

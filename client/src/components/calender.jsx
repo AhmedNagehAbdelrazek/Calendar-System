@@ -28,7 +28,7 @@ const MyCalendar = () => {
         axios.get('http://localhost:5000/api/events',
           {headers: {Authorization: `Bearer ${token}`}})
           .then(response => setEvents(response.data));
-    }, []);
+    }, [isLoggedIn,navigate,token]);
     
     const handleSelectSlot = ({ start, end }) => {
       setShowEventForm(true);

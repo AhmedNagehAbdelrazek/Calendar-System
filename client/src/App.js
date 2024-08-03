@@ -35,7 +35,7 @@ const MainLayout = () => {
     if (!isLoggedIn) {
       navigate('/login'); // Redirect to login if not logged in
     }
-  },[isLoggedIn]);
+  },[isLoggedIn,navigate]);
 
   return(
   <div>
