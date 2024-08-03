@@ -22,6 +22,7 @@ mongoose.connect(
      });
 
 app.use('/api', routes);
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
