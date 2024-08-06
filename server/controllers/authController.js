@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const tokenSecret = "aaQ$tw53GqwEFCq34tw"
 exports.tokenSecret = tokenSecret;
 
+// Controllers
 exports.signup = async (req, res) => {
     const { username, password, email } = req.body; 
   try {
